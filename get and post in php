@@ -1,0 +1,14 @@
+<title>File Handling with GET and POST</title>
+
+# Enter Data (GET or POST)
+
+Enter text (GET): Submit via GET
+Enter text (POST): Submit via POST "; // Append the input to the file file_put_contents($grp5_tognorussell_ex3, $input . "\n", FILE_APPEND); echo "Data added to '$grp5_tognorussell_ex3' using GET.
+"; } // If the form was submitted using POST, add the input to the file if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['post_input'])) { $input = htmlspecialchars($_POST['post_input']); echo "POST input received: $input
+"; // Append the input to the file file_put_contents($grp5_tognorussell_ex3, $input . "\n", FILE_APPEND); echo "Data added to '$grp5_tognorussell_ex3' using POST.
+"; } // Check if the file exists and display its contents if (file_exists($grp5_tognorussell_ex3)) { echo "
+File '$grp5_tognorussell_ex3' exists.
+"; $content = file_get_contents($grp5_tognorussell_ex3); echo "File Contents:
+"; echo nl2br(htmlspecialchars($content)); // Display file contents with line breaks } else { echo "File '$grp5_tognorussell_ex3' does not exist.
+"; // Create file with default content if it doesn't exist $data = "This is a sample content.\nThis is the second line."; file_put_contents($grp5_tognorussell_ex3, $data); echo "File '$grp5_tognorussell_ex3' created and data written.
+"; } ?>
